@@ -1,6 +1,8 @@
 package com.example.product_service;
 
 import com.example.product_service.dto.ProductRequest;
+import com.example.product_service.repo.Productrepo;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -30,6 +32,8 @@ class ProductServiceApplicationTests {
 	private MockMvc mockMvc;
 	@Autowired
 	private JsonMapper jsonMapper;
+	@Autowired
+	private Productrepo productrepo;
 
 	@DynamicPropertySource
 	static void setProperties(DynamicPropertyRegistry dynamicPropertyRegistry) {
@@ -46,6 +50,7 @@ class ProductServiceApplicationTests {
 						.contentType(MediaType.APPLICATION_JSON)
 						.content(jsonMapper.writeValueAsString(productRequest)))
 				.andExpect(status().isCreated());
+        Assertions.assertEquals(1, productrepo.findAll().size());
 	}
 
 	private ProductRequest getProductRequest() {
