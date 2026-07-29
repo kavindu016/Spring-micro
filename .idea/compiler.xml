@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="inventory-service (1) (com.example.parent)" />
+        <module name="api-gateway" />
         <module name="order-service (1) (com.example.parent)" />
         <module name="product-service (1) (com.example.parent)" />
         <module name="discovery-server" />
@@ -22,6 +23,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Micro-parent" options="-parameters" />
+      <module name="api-gateway" options="-parameters" />
       <module name="discovery-server" options="-parameters" />
       <module name="inventory-service" options="-parameters" />
       <module name="inventory-service (1) (com.example.parent)" options="-parameters" />
