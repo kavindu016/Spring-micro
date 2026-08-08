@@ -8,6 +8,7 @@ This project demonstrates a Spring Boot microservices architecture using:
 - Spring Cloud Gateway
 - WebClient
 - MongoDB
+- KeyClock
 
 ## Documentation
 
