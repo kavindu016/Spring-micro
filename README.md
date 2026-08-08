@@ -9,6 +9,7 @@ This project demonstrates a Spring Boot microservices architecture using:
 - WebClient
 - MongoDB
 - KeyClock
+- MySQL
 
 ## Documentation
 
