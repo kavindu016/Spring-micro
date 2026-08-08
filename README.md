@@ -20,7 +20,6 @@ This project demonstrates a Spring Boot microservices architecture using:
 - [Authentication & Authorization](docs/06-authentication%20&%20authorization.md)
 - [Request Flow](docs/05-request-flow.md)
 
-## Architecture
 
 # Architecture
 
