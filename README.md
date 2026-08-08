@@ -15,6 +15,8 @@ This project demonstrates a Spring Boot microservices architecture using:
 - [Service Communication](docs/02-service-communication.md)
 - [Service Discovery & Load Balancing](docs/03-service-discovery.md)
 - [API Gateway](docs/04-api-gateway.md)
+- [Authentication & Authorization](docs/06-authentication%20&%20authorization.md)
+- [Request Flow](docs/05-request-flow.md)
 
 ## Architecture
 

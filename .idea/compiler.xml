@@ -8,17 +8,23 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="inventory-service (1) (com.example.parent)" />
-        <module name="api-gateway" />
         <module name="order-service (1) (com.example.parent)" />
         <module name="product-service (1) (com.example.parent)" />
+      </profile>
+      <profile name="Annotation profile for Micro-parent" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
+        </processorPath>
+        <module name="api-gateway" />
+        <module name="product-service" />
         <module name="discovery-server" />
+        <module name="inventory-service" />
+        <module name="order-service" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="inventory-service" target="21" />
-      <module name="order-service" target="21" />
-      <module name="product-service" target="21" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
