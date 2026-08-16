@@ -19,6 +19,7 @@ This project demonstrates a Spring Boot microservices architecture using:
 - [API Gateway](docs/04-api-gateway.md)
 - [Authentication & Authorization](docs/06-authentication%20&%20authorization.md)
 - [Request Flow](docs/05-request-flow.md)
+- [Circuit Breaker](docs/07-Circuit%20Breaker.md)
 
 
 # Architecture

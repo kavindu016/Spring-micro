@@ -4,6 +4,8 @@
 
 The communication is synchronous, implemented using Spring's `WebClient`.
 
+- Synchronous Communication: Send a request → wait for the response → continue the process.
+
 Although `WebClient` is asynchronous by nature (returns `Mono`/`Flux`), it is
 converted to a synchronous call using the `.block()` method, since the order
 flow currently requires the inventory check to complete before proceeding.

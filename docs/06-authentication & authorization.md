@@ -2,6 +2,9 @@
 
 The microservices use **Keycloak** for authentication and authorization. Keycloak acts as the Identity and Access Management (IAM) server and issues OAuth 2.0 access tokens.
 
+- **User** → The person who uses the application.
+- **Client** → The application that uses Keycloak for authentication and authorization.
+
 ## Keycloak Setup
 
 Keycloak is running locally on:
@@ -136,3 +139,59 @@ The following approach should be used:
 - If the dashboard needs to be accessed manually, use an SSH tunnel through a machine inside the private network.
 
 This provides network-level protection for Eureka instead of trying to add JWT authentication to the browser-facing Eureka dashboard.
+
+## Complete Flow
+
+```aiignore
+                ┌──────────────┐
+                │     User     │
+                │    Kavindu   │
+                └──────┬───────┘
+                       │
+                  Click Login
+                       ↓
+                ┌──────────────┐
+                │   Keycloak   │
+                │     IAM      │
+                └──────┬───────┘
+                       │
+              Username + Password
+                       ↓
+                 Validate User
+                       │
+                 ┌─────┴─────┐
+                 │           │
+              Invalid       Valid
+                 │           │
+              Reject         ↓
+                       Authorization Code
+                              ↓
+                     ┌────────────────┐
+                     │  Your Client   │
+                     │ "spring client"│
+                     └───────┬────────┘
+                             │
+                       Token Exchange
+                             ↓
+                  ┌─────────────────────┐
+                  │ Access + Refresh    │
+                  │       Token         │
+                  └──────────┬──────────┘
+                             ↓
+                       ┌───────────┐
+                       │  Your App │
+                       └─────┬─────┘
+                             │
+                             ↓
+                      ┌──────────────┐
+                      │ API Gateway  │
+                      └──────┬───────┘
+                             │
+                             ↓
+                     ┌────────────────┐
+                     │ Microservices  │
+                     │ Product/Order  │
+                     │ Inventory etc. │
+                     └────────────────┘
+```
+
