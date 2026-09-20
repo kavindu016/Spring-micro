@@ -186,4 +186,4 @@ CompletableFuture
 Inventory Service
 ```
 
-![Custom Span](images/zipking.PNG )
+![Custom Span](images/zipking.png )

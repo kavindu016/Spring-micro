@@ -10,6 +10,9 @@ This project demonstrates a Spring Boot microservices architecture using:
 - MongoDB
 - KeyClock
 - MySQL
+- Micrometer Tracing
+- Brave
+- Zipkin
 
 ## Documentation
 
