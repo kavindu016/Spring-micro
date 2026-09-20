@@ -20,6 +20,7 @@ This project demonstrates a Spring Boot microservices architecture using:
 - [Authentication & Authorization](docs/06-authentication%20&%20authorization.md)
 - [Request Flow](docs/05-request-flow.md)
 - [Circuit Breaker](docs/07-Circuit%20Breaker.md)
+- [Distributed Tracing](docs/08-Distributed-Tracing.md)
 
 
 # Architecture
