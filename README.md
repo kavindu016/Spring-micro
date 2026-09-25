@@ -13,6 +13,8 @@ This project demonstrates a Spring Boot microservices architecture using:
 - Micrometer Tracing
 - Brave
 - Zipkin
+- Zookeeper
+- Kafka
 
 ## Documentation
 
@@ -24,6 +26,7 @@ This project demonstrates a Spring Boot microservices architecture using:
 - [Request Flow](docs/05-request-flow.md)
 - [Circuit Breaker](docs/07-Circuit%20Breaker.md)
 - [Distributed Tracing](docs/08-Distributed-Tracing.md)
+- [Event-Driven Notification](docs/09-Event-Driven%20Notification.md)
 
 
 # Architecture
