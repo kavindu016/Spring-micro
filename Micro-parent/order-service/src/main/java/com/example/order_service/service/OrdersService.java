@@ -10,6 +10,7 @@ import com.example.order_service.model.Order;
 import com.example.order_service.model.OrderLineItems;
 import com.example.order_service.repo.Orderrepo;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,6 +23,7 @@ import java.util.UUID;
 @Service
 @RequiredArgsConstructor
 @Transactional
+@Slf4j
 public class OrdersService {
 
     private final Orderrepo orderrepo;
@@ -56,13 +58,21 @@ public class OrdersService {
 
             assert inventoryResponses != null;
 
+            log.info("Inventory response: {}", Arrays.toString(inventoryResponses));
+
             boolean allInStock = inventoryResponses.length == skuCodes.size()
                     && Arrays.stream(inventoryResponses)
                     .allMatch(r -> Boolean.TRUE.equals(r.isStock()));
 
+            log.info("All in stock: {}", allInStock);
+
             if (allInStock) {
+                log.info("Saving order...");
                 orderrepo.save(order);
+                log.info("Order saved");
+                log.info("Sending Kafka message...");
                 kafkaTemplate.send("notificationTopic", new OrderPlaceEvent(order.getOrderId()));
+                log.info("Kafka send called");
                 return "Order Placed Successfully";
             } else {
                 throw new IllegalArgumentException("Product is not in the stock");

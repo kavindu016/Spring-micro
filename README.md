@@ -15,6 +15,7 @@ This project demonstrates a Spring Boot microservices architecture using:
 - Zipkin
 - Zookeeper
 - Kafka
+- docker
 
 ## Documentation
 
@@ -27,6 +28,7 @@ This project demonstrates a Spring Boot microservices architecture using:
 - [Circuit Breaker](docs/07-Circuit%20Breaker.md)
 - [Distributed Tracing](docs/08-Distributed-Tracing.md)
 - [Event-Driven Notification](docs/09-Event-Driven%20Notification.md)
+- [Containerization](docs/10-Containerization.md)
 
 
 # Architecture
