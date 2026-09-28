@@ -36,4 +36,4 @@ This project demonstrates a Spring Boot microservices architecture using:
 
 # Architecture
 
-![Microservices Architecture](images/Ar.png)
+![Microservices Architecture](images/Ar.jfif)
