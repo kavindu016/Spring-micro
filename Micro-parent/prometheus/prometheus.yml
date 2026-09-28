@@ -15,7 +15,7 @@ scrape_configs:
     static_configs:
       - targets: ['order-service:8080']
         labels:
-          application: 'Order Service Application'a
+          application: 'Order Service Application'
 
   - job_name: 'inventory_service'
     metrics_path: '/actuator/prometheus'
