@@ -7,6 +7,9 @@ This repository contains the following modules:
     - `inventory-service`
     - `order-service`
     - `product-service`
+    - `api-gateway`
+    - `discovery-service`
+    - `notification-service`
 
 - **inventory-service**  
   Initial project setup containing only the original starter code.
