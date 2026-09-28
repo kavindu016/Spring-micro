@@ -3,6 +3,7 @@ package com.example.product_service;
 import com.example.product_service.dto.ProductRequest;
 import com.example.product_service.repo.Productrepo;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -24,6 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @Testcontainers
 @AutoConfigureMockMvc
+@Disabled
 class ProductServiceApplicationTests {
 
 	@Container

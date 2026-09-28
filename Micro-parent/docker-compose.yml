@@ -213,6 +213,7 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=docker
       - EUREKA_INSTANCE_PREFERIPADDRESS=true
+      - SERVER_PORT=8080
     depends_on:
       - mongo
       - discovery-server
@@ -230,6 +231,7 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=docker
       - EUREKA_INSTANCE_PREFERIPADDRESS=true
+      - SERVER_PORT=8080
     depends_on:
       mysql-order:
         condition: service_healthy
@@ -253,6 +255,7 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=docker
       - EUREKA_INSTANCE_PREFERIPADDRESS=true
+      - SERVER_PORT=8080
     depends_on:
       mysql-inventory:
         condition: service_healthy
@@ -274,6 +277,7 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=docker
       - EUREKA_INSTANCE_PREFERIPADDRESS=true
+      - SERVER_PORT=8080
     depends_on:
       - zipkin
       - kafka
@@ -286,33 +290,33 @@ services:
           memory: 512M
 
   ## Prometheus (disabled for now — uncomment to re-enable)
-  # prometheus:
-  #   image: prom/prometheus:v2.37.1
-  #   container_name: prometheus
-  #   restart: always
-  #   ports:
-  #     - "9090:9090"
-  #   volumes:
-  #     - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
-  #   depends_on:
-  #     - product-service
-  #     - inventory-service
-  #     - order-service
-  #     - notification-service
+  prometheus:
+     image: prom/prometheus:v2.53.0
+     container_name: prometheus
+     restart: always
+     ports:
+       - "9090:9090"
+     volumes:
+       - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+     depends_on:
+       - product-service
+       - inventory-service
+       - order-service
+       - notification-service
 
-  # grafana:
-  #   image: grafana/grafana-oss:8.5.2
-  #   container_name: grafana
-  #   restart: always
-  #   ports:
-  #     - "3000:3000"
-  #   links:
-  #     - prometheus:prometheus
-  #   volumes:
-  #     - ./grafana:/var/lib/grafana
-  #   environment:
-  #     - GF_SECURITY_ADMIN_USER=admin
-  #     - GF_SECURITY_ADMIN_PASSWORD=password
+  grafana:
+     image: grafana/grafana-oss:8.5.2
+     container_name: grafana
+     restart: always
+     ports:
+       - "3000:3000"
+     links:
+       - prometheus:prometheus
+     volumes:
+       - ./grafana:/var/lib/grafana
+     environment:
+       - GF_SECURITY_ADMIN_USER=admin
+       - GF_SECURITY_ADMIN_PASSWORD=password
 
 volumes:
   mongo-data:

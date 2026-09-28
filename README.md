@@ -16,6 +16,8 @@ This project demonstrates a Spring Boot microservices architecture using:
 - Zookeeper
 - Kafka
 - docker
+- prometheus
+- Grafana
 
 ## Documentation
 
@@ -29,6 +31,7 @@ This project demonstrates a Spring Boot microservices architecture using:
 - [Distributed Tracing](docs/08-Distributed-Tracing.md)
 - [Event-Driven Notification](docs/09-Event-Driven%20Notification.md)
 - [Containerization](docs/10-Containerization.md)
+- [Monitoring](docs/11-monitoring.md)
 
 
 # Architecture
