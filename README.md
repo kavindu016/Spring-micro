@@ -18,6 +18,7 @@ This project demonstrates a Spring Boot microservices architecture using:
 - docker
 - prometheus
 - Grafana
+- Kubernetes
 
 ## Documentation
 
@@ -32,6 +33,7 @@ This project demonstrates a Spring Boot microservices architecture using:
 - [Event-Driven Notification](docs/09-Event-Driven%20Notification.md)
 - [Containerization](docs/10-Containerization.md)
 - [Monitoring](docs/11-monitoring.md)
+- [Kubernetes Deployment](docs/12-Kubernetes-Deployment.md)
 
 
 # Architecture

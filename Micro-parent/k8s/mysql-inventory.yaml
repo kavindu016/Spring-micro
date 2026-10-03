@@ -1,0 +1,73 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-inventory-pvc
+  namespace: spring-micro
+spec:
+  accessModes: ["ReadWriteOnce"]
+  resources:
+    requests:
+      storage: 5Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-inventory
+  namespace: spring-micro
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql-inventory
+  template:
+    metadata:
+      labels:
+        app: mysql-inventory
+    spec:
+      containers:
+        - name: mysql
+          image: mysql:8.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3306
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-inventory-secret
+                  key: password
+            - name: MYSQL_DATABASE
+              value: inventory_service
+          volumeMounts:
+            - name: data
+              mountPath: /var/lib/mysql
+          readinessProbe:
+            exec:
+              command:
+                - sh
+                - -c
+                - mysqladmin ping -h 127.0.0.1 -uroot -p"$MYSQL_ROOT_PASSWORD"
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+          resources:
+            requests:
+              memory: 512Mi
+            limits:
+              memory: 1Gi
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: mysql-inventory-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-inventory
+  namespace: spring-micro
+spec:
+  selector:
+    app: mysql-inventory
+  ports:
+    - port: 3306
+      targetPort: 3306
